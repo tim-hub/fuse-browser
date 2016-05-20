@@ -1,10 +1,13 @@
 var Observable=require('FuseJS/Observable');
 
 var link=Observable("https://bing.com");
-var historyItems="";
+var historyItems=Observable('https://bing.com');
 var currentPage=0;
 
- function gotoUrl(){
+
+
+
+function gotoUrl(){
  	if(link.value.indexOf("https://") ===0 ){
  		
  	}else if(link.value.indexOf("http://") ===0){
@@ -13,37 +16,54 @@ var currentPage=0;
  		link.value="http://"+link.value;
  	}
 
- 	gotoUrl(link.value);
-
     console.log("goto: "+link.value);
-
-
-    currentPage=historyItems.length-1;
+ 	webView.goto(link.value);
+    console.log(historyItems.length);
 }
 
 
-function gotoUrl(String url){
-	webView.goto(url);
-}
+
 
 function goBack(){
 
-	if(historyItems.length>=2){
-		currentPage=historyItems.length-2;
-		gotoUrl(historyItems[currentPage]);
+	if(historyItems.length>=3){
+		lastPage=historyItems.length-2;
 
-	}
+        console.log("go back to: "+historyItems.getAt(lastPage));
+		webView.goto(historyItems.getAt(lastPage));
+
+        historyItems.remove(historyItems.getAt(lastPage+1)); 
+	}else{
+
+        console.log("go back but no history");
+    }
+
+    console.log(historyItems.length);
 
 }
 
 
 
  module.exports = {
-    onPageLoaded : function(res) {
-         console.log("WebView arrived at "+ JSON.parse(res.json).url);
-         
-         historyItems.add(JSON.parse(res.json).url);
-    },
+    historyItems:historyItems,
     link:link,
-    gotoUrl:gotoUrl
+    onPageLoaded : function(res) {
+        var loadedUrl=JSON.parse(res.json).url;
+         console.log("WebView arrived at "+ loadedUrl );
+         
+
+
+         if(link.value!==loadedUrl){
+            
+            historyItems.add(loadedUrl);
+            console.log(historyItems.length);
+         }
+
+          link.value=loadedUrl; //show url at bar
+
+            
+    },
+    
+    gotoUrl:gotoUrl,
+    goBack:goBack
 };

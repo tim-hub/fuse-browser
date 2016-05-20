@@ -1,7 +1,8 @@
 <App Theme="Basic">
 	<DockPanel>
 		<StatusBarBackground Dock="Top" />
-
+		<BottomBarBackground Dock="Bottom" />
+		
 		<JavaScript File="Main.js" />
 
 		<NativeViewHost>
@@ -19,7 +20,7 @@
 
 		<Panel Dock="Bottom" >
 
-			<Image File="assets/left.png" Width="64" Alignment="BottomLeft"/>
+			<Image File="assets/left.png" Width="64" Alignment="BottomLeft" Clicked="{goBack}"/>
 
 			<Image File="assets/right.png" Width="64" Alignment="BottomRight" Clicked="{gotoUrl}"/>
 
@@ -32,7 +33,7 @@
 
 		</Panel>
 
-		<BottomBarBackground Dock="Bottom" />
+		
 	</DockPanel>
 
 
