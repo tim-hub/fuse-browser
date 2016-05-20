@@ -1,0 +1,40 @@
+<App Theme="Basic">
+	<DockPanel>
+		<StatusBarBackground Dock="Top" />
+
+		<JavaScript File="Main.js" />
+
+		<NativeViewHost>
+            <WebView Dock="Fill" ux:Name="webView">
+                <PageLoaded>
+                    <EvaluateJS Handler="{onPageLoaded}">
+                        var result = {
+                            url : document.location.href
+                        };
+                        return result;
+                    </EvaluateJS>
+                </PageLoaded>
+            </WebView>
+        </NativeViewHost>
+
+		<Panel Dock="Bottom" >
+
+			<Image File="assets/left.png" Width="64" Alignment="BottomLeft"/>
+
+			<Image File="assets/right.png" Width="64" Alignment="BottomRight" Clicked="{gotoUrl}"/>
+
+			<TextInput  Value="{link}" IsMultiline="false" Width="200" Alignment="BottomCenter"/>
+
+<!-- 			<Panel Alignment="BottomCenter" Width="240">
+				<TextInput  Value="address here" IsMultiline="false" Width="160" Alignment="Left"/>
+				<Image File="assets/check.png" Alignment="Right"/>
+			</Panel> -->
+
+		</Panel>
+
+		<BottomBarBackground Dock="Bottom" />
+	</DockPanel>
+
+
+</App>
+
