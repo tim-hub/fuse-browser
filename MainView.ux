@@ -26,11 +26,6 @@
 
 			<TextInput  Value="{link}" IsMultiline="false" Width="200" Alignment="BottomCenter"/>
 
-<!-- 			<Panel Alignment="BottomCenter" Width="240">
-				<TextInput  Value="address here" IsMultiline="false" Width="160" Alignment="Left"/>
-				<Image File="assets/check.png" Alignment="Right"/>
-			</Panel> -->
-
 		</Panel>
 
 		

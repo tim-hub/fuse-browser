@@ -27,5 +27,27 @@
   ],
   "Includes": [
     "*"
-  ]
+  ],
+  "Android": {
+        "Key": {
+            "Alias": "fuse-browser",
+            "AliasPassword": "xxx",
+            "Store": "build/release.keystore",
+            "StorePassword": "xxx"
+        },
+        "Package": "com.xxx.xxx",
+        "Description": "A simple browser developer throught fusetools by Timothy White.",
+        "Icons": {
+            "XXXHDPI": "appicon.png"
+        }
+
+    },
+    "Title": "Fuse Browser",
+    "Description": "A simple browser developer throught fusetools by Timothy White.",
+    "Publisher": "Timothy White",
+    "Version": "0.0.1" ,
+    "VersionCode": "1",
+    "Mobile": {
+        "Orientations": "Portrait"
+    }
 }
